@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "11771915365",
+    "project_id": "techlertno1",
+    "storage_bucket": "techlertno1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11771915365:android:343a9491a66ee6913cea8c",
+        "android_client_info": {
+          "package_name": "com.example.techlert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11771915365-f2kas4kf2vbchdplt14qj0houpmrpgr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-pld71xVWoBbAGmJvUboNWUTeBZpk5UU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11771915365-f2kas4kf2vbchdplt14qj0houpmrpgr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
