@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techlert/functions/techlert_main_screen.dart';
 import 'package:techlert/pages/homepage.dart';
 
 void navigateToConfirmationPage(BuildContext context) {
@@ -21,9 +22,9 @@ void navigateToConfirmationPage(BuildContext context) {
           TextButton(
             onPressed: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const HomePage()),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const MainScreenView())));
             },
             child: const Text('Yes'),
           ),

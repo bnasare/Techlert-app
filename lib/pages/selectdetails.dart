@@ -14,7 +14,7 @@ class _SelectDetailsState extends State<SelectDetails> {
   final int _currentPageIndex = 0;
 
   final List _pages = [
-    ScreenOne(),
+    const ScreenOne(),
     const ScreenTwo(
       college: '',
       programs: [],
