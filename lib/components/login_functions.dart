@@ -99,6 +99,7 @@ Future<void> signIn(
 
       if (user.emailVerified) {
         Navigator.pop(context);
+        // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -114,6 +115,7 @@ Future<void> signIn(
         }
       } else {
         Navigator.pop(context);
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             behavior: SnackBarBehavior.floating,

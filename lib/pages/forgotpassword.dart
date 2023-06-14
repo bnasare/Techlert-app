@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:techlert/functions/forgotpassword_functions.dart';
+import 'package:techlert/components/forgotpassword_functions.dart';
 import 'package:techlert/pages/loginpage.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
@@ -18,10 +18,10 @@ class ForgotPasswordPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'Forgot Password',
-            style: GoogleFonts.abel(
-              fontSize: 30,
+            style: GoogleFonts.poppins(
+              fontSize: 25,
               color: Colors.black,
-              letterSpacing: 2,
+              letterSpacing: 3,
             ),
           ),
           centerTitle: true,
@@ -49,10 +49,11 @@ class ForgotPasswordPage extends StatelessWidget {
           child: Column(
             children: [
               TextField(
+                style: GoogleFonts.urbanist(fontSize: 20),
                 controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                ),
+                decoration: InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: GoogleFonts.ubuntu(fontSize: 16)),
               ),
               const SizedBox(height: 20.0),
               DecoratedBox(
@@ -77,9 +78,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   },
                   child: Text(
                     'RESET PASSWORD',
-                    style: GoogleFonts.comfortaa(
-                      fontSize: 12,
-                      letterSpacing: 1.5,
+                    style: GoogleFonts.ubuntu(
+                      fontSize: 15,
                     ),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:techlert/functions/login_functions.dart';
+import 'package:techlert/components/login_functions.dart';
+import 'package:techlert/pages/choosepage.dart';
 import 'package:techlert/pages/forgotpassword.dart';
 import 'package:techlert/pages/signuppage.dart';
 
@@ -12,6 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -43,13 +45,29 @@ class _LoginPageState extends State<LoginPage> {
         appBar: AppBar(
           title: Text(
             'Login',
-            style: GoogleFonts.abel(
-                fontSize: 30, color: Colors.black, letterSpacing: 2),
+            style: GoogleFonts.poppins(
+              fontSize: 25,
+              letterSpacing: 3,
+              color: Colors.black,
+            ),
           ),
           centerTitle: true,
           elevation: 10,
           backgroundColor: Colors.white,
           toolbarHeight: 70,
+          leading: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const ChoosePage();
+                  },
+                ));
+              },
+              child: const Icon(
+                Icons.arrow_back_ios_new_outlined,
+                color: Colors.black,
+                size: 25,
+              )),
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -65,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 40),
                     Padding(
@@ -73,15 +92,18 @@ class _LoginPageState extends State<LoginPage> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: TextField(
+                          keyboardType: TextInputType.emailAddress,
+                          style: GoogleFonts.urbanist(fontSize: 20),
                           controller: emailController,
                           autofocus: false,
                           decoration: InputDecoration(
                             labelText: 'Email Address',
-                            contentPadding: const EdgeInsets.fromLTRB(15, 15, 15, 20),
+                            labelStyle: GoogleFonts.ubuntu(fontSize: 16),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(15, 15, 15, 20),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            hintText: 'bigboy@gmail.com',
                             suffixIcon: const Icon(Icons.email_outlined),
                           ),
                         ),
@@ -89,17 +111,20 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 0),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 15),
+                      padding: const EdgeInsets.only(
+                          left: 40, right: 40, top: 15, bottom: 0),
                       child: TextFormField(
+                        style: GoogleFonts.urbanist(fontSize: 20),
                         controller: passwordController,
                         autofocus: false,
                         decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.fromLTRB(15, 15, 15, 20),
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(15, 15, 15, 20),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          hintText: 'Enter your password here',
+                          labelText: 'Password',
+                          labelStyle: GoogleFonts.ubuntu(fontSize: 16),
                           suffixIcon: GestureDetector(
                             onTap: () {
                               setState(() {
@@ -117,10 +142,30 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: isObscure,
                       ),
                     ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordPage();
+                              },
+                            ),
+                          );
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 32),
+                          child: Text(
+                            'Reset Password?',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontSize: 17),
+                          ),
+                        )),
                     const SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 15),
+                          horizontal: 40, vertical: 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -136,17 +181,19 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             child: Icon(
                               rememberMe
-                                  ? Icons.check_circle
+                                  ? Icons.check_box_rounded
                                   : Icons.check_box_outline_blank,
-                              color: rememberMe ? Colors.black : Colors.black,
+                              color: rememberMe
+                                  ? const Color.fromARGB(255, 48, 46, 46)
+                                  : Colors.black,
                             ),
                           )
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 70),
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(

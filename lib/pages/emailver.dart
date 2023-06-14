@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:techlert/functions/emailver_functions.dart';
+import 'package:techlert/components/emailver_functions.dart';
 
 class EmailVerificationPage extends StatefulWidget {
   const EmailVerificationPage({super.key});
@@ -12,25 +12,18 @@ class EmailVerificationPage extends StatefulWidget {
 
 class _EmailVerificationPageState extends State<EmailVerificationPage> {
   @override
-  void initState() {
-    super.initState();
-    // Check if the user's email is already verified
-    checkEmailVerification(context);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'Email Verification',
-          style: GoogleFonts.abel(
-            fontSize: 30,
+          style: GoogleFonts.poppins(
+            fontSize: 25,
             color: Colors.black,
-            letterSpacing: 2,
+            letterSpacing: 3,
           ),
         ),
-        centerTitle: false,
+        centerTitle: true,
         elevation: 10,
         backgroundColor: Colors.white,
         toolbarHeight: 70,
@@ -42,6 +35,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
           children: [
             Text(
               'Your email is not verified!',
+              style: GoogleFonts.adamina(fontSize: 25),
+            ),
+            Text(
+              'Verify before logging in.',
               style: GoogleFonts.adamina(fontSize: 25),
             ),
             const SizedBox(height: 20),
@@ -65,16 +62,11 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                 onPressed: () {
                   // Request email verification resend
                   FirebaseAuth.instance.currentUser?.sendEmailVerification();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Verification email sent.'),
-                    ),
-                  );
+                  emailVerificationSent(context);
                 },
                 child: Text(
                   'RESEND VERIFICATION MAIL',
-                  style:
-                      GoogleFonts.comfortaa(fontSize: 12, letterSpacing: 1.5),
+                  style: GoogleFonts.ubuntu(fontSize: 15),
                 ),
               ),
             ),
@@ -84,7 +76,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                 navigateToLoginPage(context);
               },
               child: Text(
-                'Go to Login',
+                'Login',
                 style: GoogleFonts.aBeeZee(fontSize: 20, color: Colors.red),
               ),
             ),

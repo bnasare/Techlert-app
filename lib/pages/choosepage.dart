@@ -56,8 +56,9 @@ class _ChoosePageState extends State<ChoosePage> {
                                   builder: (context) => const LoginPage()));
                         },
                         child: Text("Login",
-                            style: GoogleFonts.comfortaa(
-                                fontSize: 23, letterSpacing: 1.5)),
+                            style: GoogleFonts.ubuntu(
+                              fontSize: 24,
+                            )),
                       ),
                     ),
                     const SizedBox(height: 25),
@@ -87,8 +88,9 @@ class _ChoosePageState extends State<ChoosePage> {
                         },
                         child: Text(
                           'Sign Up',
-                          style: GoogleFonts.comfortaa(
-                              fontSize: 23, letterSpacing: 1.5),
+                          style: GoogleFonts.ubuntu(
+                            fontSize: 24,
+                          ),
                         ),
                       ),
                     ),

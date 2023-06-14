@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:techlert/functions/signup_functions.dart';
+import 'package:techlert/components/signup_functions.dart';
+import 'package:techlert/pages/choosepage.dart';
 import 'package:techlert/pages/loginpage.dart';
 
 class SignupPage extends StatefulWidget {
@@ -28,7 +29,8 @@ class _SignupPageState extends State<SignupPage> {
     super.dispose();
   }
 
-  bool isObscure = true;
+  bool isPasswordObscured = true;
+  bool isConfirmPasswordObscured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +42,26 @@ class _SignupPageState extends State<SignupPage> {
         appBar: AppBar(
           title: Text(
             'Sign Up',
-            style: GoogleFonts.abel(
-                fontSize: 30, color: Colors.black, letterSpacing: 2),
+            style: GoogleFonts.poppins(
+                fontSize: 25, color: Colors.black, letterSpacing: 3),
           ),
           centerTitle: true,
           elevation: 10,
           backgroundColor: Colors.white,
           toolbarHeight: 70,
+          leading: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const ChoosePage();
+                  },
+                ));
+              },
+              child: const Icon(
+                Icons.arrow_back_ios_new_outlined,
+                color: Colors.black,
+                size: 25,
+              )),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -59,7 +74,6 @@ class _SignupPageState extends State<SignupPage> {
                   child: Image.asset('assets/images/signup.png'),
                 ),
               ),
-              //const SizedBox(height: 30),
               Column(
                 children: [
                   const SizedBox(height: 40),
@@ -67,15 +81,16 @@ class _SignupPageState extends State<SignupPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 15),
                     child: TextField(
+                      style: GoogleFonts.urbanist(fontSize: 20),
                       controller: firstNameController,
                       autofocus: false,
                       decoration: InputDecoration(
                           labelText: 'First name',
+                          labelStyle: GoogleFonts.ubuntu(fontSize: 16),
                           contentPadding:
                               const EdgeInsets.fromLTRB(15, 15, 15, 20),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          hintText: 'John',
                           suffixIcon: const Icon(Icons.person)),
                     ),
                   ),
@@ -83,15 +98,16 @@ class _SignupPageState extends State<SignupPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 15),
                     child: TextField(
+                      style: GoogleFonts.urbanist(fontSize: 20),
                       controller: lastNameController,
                       autofocus: false,
                       decoration: InputDecoration(
                           labelText: 'Last name',
+                          labelStyle: GoogleFonts.ubuntu(fontSize: 16),
                           contentPadding:
                               const EdgeInsets.fromLTRB(15, 15, 15, 20),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          hintText: 'Amoako',
                           suffixIcon: const Icon(Icons.person)),
                     ),
                   ),
@@ -99,15 +115,17 @@ class _SignupPageState extends State<SignupPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 15),
                     child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      style: GoogleFonts.urbanist(fontSize: 20),
                       controller: emailController,
                       autofocus: false,
                       decoration: InputDecoration(
                           labelText: 'Email Address',
+                          labelStyle: GoogleFonts.ubuntu(fontSize: 16),
                           contentPadding:
                               const EdgeInsets.fromLTRB(15, 15, 15, 20),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          hintText: 'bigboy@gmail.com',
                           suffixIcon: const Icon(Icons.email_outlined)),
                     ),
                   ),
@@ -115,27 +133,29 @@ class _SignupPageState extends State<SignupPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 15),
                     child: TextField(
+                      style: GoogleFonts.urbanist(fontSize: 20),
                       controller: passwordController,
                       autofocus: false,
                       decoration: InputDecoration(
                         labelText: 'Password',
+                        labelStyle: GoogleFonts.ubuntu(fontSize: 16),
                         contentPadding:
                             const EdgeInsets.fromLTRB(15, 15, 15, 20),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        hintText: 'Set your passowrd',
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         suffixIcon: GestureDetector(
                           onTap: () {
                             setState(() {
-                              isObscure = !isObscure;
+                              isPasswordObscured = !isPasswordObscured;
                             });
                           },
-                          child: Icon(isObscure
+                          child: Icon(isPasswordObscured
                               ? Icons.visibility_off
                               : Icons.visibility),
                         ),
                       ),
-                      obscureText: isObscure,
+                      obscureText: isPasswordObscured,
                       obscuringCharacter: '*',
                     ),
                   ),
@@ -143,33 +163,36 @@ class _SignupPageState extends State<SignupPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 15),
                     child: TextField(
+                      style: GoogleFonts.urbanist(fontSize: 20),
                       controller: confirmPasswordController,
                       autofocus: false,
                       decoration: InputDecoration(
-                        labelText: 'Cornfirm password',
+                        labelText: 'Confirm password',
+                        labelStyle: GoogleFonts.ubuntu(fontSize: 16),
                         contentPadding:
                             const EdgeInsets.fromLTRB(15, 15, 15, 20),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        hintText: 'Retype password',
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         suffixIcon: GestureDetector(
                           onTap: () {
                             setState(() {
-                              isObscure = !isObscure;
+                              isConfirmPasswordObscured =
+                                  !isConfirmPasswordObscured;
                             });
                           },
-                          child: Icon(isObscure
+                          child: Icon(isConfirmPasswordObscured
                               ? Icons.visibility_off
                               : Icons.visibility),
                         ),
                       ),
-                      obscureText: isObscure,
+                      obscureText: isConfirmPasswordObscured,
                       obscuringCharacter: '*',
                     ),
                   ),
                   const SizedBox(height: 10),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 70),
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
@@ -226,8 +249,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                         child: Text(
                           "Sign Up",
-                          style: GoogleFonts.comfortaa(
-                              fontSize: 23, letterSpacing: 1.5),
+                          style: GoogleFonts.ubuntu(fontSize: 25),
                         ),
                       ),
                     ),
