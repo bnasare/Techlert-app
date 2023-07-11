@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:techlert/pages/maps_page.dart';
+import 'package:techlert/pages/profile_page.dart';
+import 'package:techlert/pages/shuttle_tracker_page.dart';
+import 'package:techlert/pages/slides_page.dart';
+import 'package:techlert/pages/techlert_main_screen.dart';
 
 class CustomNavBar extends StatefulWidget {
   const CustomNavBar({super.key});
@@ -20,35 +25,68 @@ class _CustomNavBarState extends State<CustomNavBar> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const MainScreenView()),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.home_filled,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      "/profile",
+                      (route) => false,
+                    );
+                  },
                   icon: const Icon(
                     Icons.person_2_outlined,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      "/slides",
+                      (route) => false,
+                    );
+                  },
                   icon: const Icon(
                     Icons.auto_stories_outlined,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const TrackerPage()),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.directions_bus_filled_outlined,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const MapsView()),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.map_outlined,
                     size: 30,
