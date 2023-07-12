@@ -73,10 +73,7 @@ class _SlidesPageState extends State<SlidesPage> {
                         ),
                       ),
                     ),
-                    const Divider(
-                      height: 20,
-                      color: Colors.transparent,
-                    ),
+                    SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {},
                       child: Container(
@@ -101,9 +98,7 @@ class _SlidesPageState extends State<SlidesPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {},
                       child: Container(
@@ -128,9 +123,7 @@ class _SlidesPageState extends State<SlidesPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {},
                       child: Container(
@@ -155,9 +148,7 @@ class _SlidesPageState extends State<SlidesPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {},
                       child: Container(
@@ -182,9 +173,7 @@ class _SlidesPageState extends State<SlidesPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    SizedBox(width: 10),
                   ],
                 )),
             const SizedBox(
